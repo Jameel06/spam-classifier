@@ -11,11 +11,11 @@ def predict_message(msg):
     confidence = max(probability)
 
     # 🔥 Improved logic
-    if confidence < 0.75:
-        result = "⚠️ Uncertain"
-    elif prediction == 1:
-        result = "🚨 Spam"
+    if prediction == 1 and confidence > 0.55:
+    result = "🚨 Spam"
+    elif prediction == 0 and confidence > 0.55:
+    result = "✅ Not Spam"
     else:
-        result = "✅ Not Spam"
+    result = "⚠️ Uncertain"
 
     return result, confidence
